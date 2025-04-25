@@ -22,6 +22,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'ivao_id',
+        'Division_id',
+        'Contry_id',
+        'atc_rating_name',
+        'atc_rating_short',
+        'pilot_rating_name',
+        'pilot_rating_short',
     ];
 
     /**

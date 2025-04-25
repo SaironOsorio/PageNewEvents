@@ -1,5 +1,4 @@
 import 'flowbite';
 
-
-/* Code From Year in the footer */
+/* Encodes current year in the footer */
 document.getElementById("year").textContent = new Date().getFullYear();
