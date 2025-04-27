@@ -84,6 +84,11 @@
     </section>
     </div>
     <hr class="bg-gray-200 border-0 h-px w-1/2 mx-auto" />
+
+    <!-- Footer -->
+    <x-footer />
+    <!-- End Footer -->
+    
     
 </body>
 </html>

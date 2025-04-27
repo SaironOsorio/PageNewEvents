@@ -41,9 +41,7 @@
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
                 <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                 <li>
-                    <a href="./Pages/eventos.html" class="block py-2 px-3 md:p-0 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 poppins-medium">Evento
-                    <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full poppins-medium">New</span>
-                    </a>
+                    <x-navbar-link :active="request()->routeIs('eventos') || request()->routeIs('event.detail')" href="{{url('eventos')}}" >Eventos </x-navbar-link>
                 </li>
                 <li>
                     <button id="dropdownPilotoLink" data-dropdown-toggle="dropdownPiloto" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:p-0 md:w-auto cursor-pointer poppins-medium">Piloto
