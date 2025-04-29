@@ -31,4 +31,10 @@ class Event extends Model
     {
         return $this->image_secondary ? asset('storage/' . $this->image_secondary) : null;
     }
+
+    public function flights()
+    {
+        return $this->hasMany(Fligths::class, 'event_id');
+    }
+
 }
