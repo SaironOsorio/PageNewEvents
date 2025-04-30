@@ -27,7 +27,7 @@
                     </div>
                   </section>
                 <div class="text-center">
-                    <a href="./booking.html" class="mb-2 mr-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100">Iterinarios</a>
+                    <a href="{{route('event.flights',$event->slug)}}" class="mb-2 mr-2 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100">Iterinarios</a>
                 </div>
             </div>
         </div>

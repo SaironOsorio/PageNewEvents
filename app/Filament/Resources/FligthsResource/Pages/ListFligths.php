@@ -64,8 +64,8 @@ class ListFligths extends ListRecords
                                 'arrival_airport'   => $row[6] ?? 'Unknown',
                                 'IcaoArrival'       => $row[7] ?? 'Unknown',
                                 'FlightType'        => $row[8] ?? 'Unknown',
-                                'GateDeparture'     => $row[9] ?? 'Unknown',
-                                'GateArrival'       => $row[10] ?? 'Unknown',
+                                'GateDeparture'     => $row[9] ??   NULL,
+                                'GateArrival'       => $row[10] ??  NULL,
                                 'flight_number'     => $row[11] ?? 'Unknown',
                                 'is_cancelled'      => false,
                             ]);

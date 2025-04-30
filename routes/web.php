@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\IVAOAuthController;
 use App\Livewire\Pages\EventDetail;
+use App\Livewire\Pages\ListFligths;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
@@ -27,6 +28,13 @@ Route::get('/eventos', function () {
 })->name('eventos');
 
 Route::get('/eventos/{slug}', EventDetail::class)->name('event.detail');
+Route::get('/eventos/{slug}/vuelos', ListFligths::class)->middleware('auth')->name('event.flights');
+
+Route::get('/tester', function ()
+{
+    return view('Test');
+})->name('tester');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
