@@ -7,6 +7,7 @@ use App\Livewire\Pages\EventDetail;
 use App\Livewire\Pages\ListFligths;
 use Illuminate\Support\Facades\Auth;
 
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -15,7 +16,11 @@ Route::get('/', function () {
 Route::get('/login', [IVAOAuthController::class, 'redirectToIVAO']);
 Route::get('/auth/callback', [IVAOAuthController::class, 'handleCallback'])->name('ivao.callback');
 
-
+Route::get('/logout', function () {
+    session()->flush(); // limpia toda la sesión
+    Auth::logout(); // si estás usando login de Laravel
+    return redirect('/');
+});
 /** Route Perfil User    */
     Route::get('/profile', function () {
         return view('Pages.Perfil'); 
@@ -28,7 +33,7 @@ Route::get('/eventos', function () {
 })->name('eventos');
 
 Route::get('/eventos/{slug}', EventDetail::class)->name('event.detail');
-Route::get('/eventos/{slug}/vuelos', ListFligths::class)->middleware('auth')->name('event.flights');
+Route::get('/eventos/{slug}/vuelos', ListFligths::class)->middleware(['auth'])->name('event.flights');
 
 Route::get('/tester', function ()
 {

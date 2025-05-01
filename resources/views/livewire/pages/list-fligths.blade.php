@@ -1,3 +1,17 @@
+@if(!session('ivao_access_token'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Tu sesión ha expirado o no tienes acceso. Por favor, inicia sesión nuevamente.',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        // Redirige a ruta que destruye sesión
+        window.location.href = '{{ route('logout') }}';
+    });
+</script>
+@endif
 <div class="w-full bg-white border border-gray-200 rounded-lg shadow-sm ">
         <div class="sm:hidden">
             <label for="tabs" class="sr-only">Select tab</label>
@@ -27,7 +41,7 @@
                                 <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm -800 md:p-6">
                                 <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                                     <div class="h-14 w-36 flex items-center justify-center">
-                                        <img class="max-h-full max-w-full object-contain" src="#" alt="Logo aerolínea" />
+                                        <img class="max-h-full max-w-full object-contain" src="{{ $fligth->logoAirline }}" alt="Logo aerolínea" />
                                     </div>
                                     <div class="flex items-center justify-between md:order-3 md:justify-end">
                                     <div class="text-end md:order-4 md:w-32">
@@ -102,7 +116,7 @@
                             <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm -800 md:p-6">
                             <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                                 <div class="h-14 w-36 flex items-center justify-center">
-                                    <img class="max-h-full max-w-full object-contain" src="#" alt="Logo aerolínea" />
+                                    <img class="max-h-full max-w-full object-contain" src="{{ $fligth->logoAirline }}" alt="Logo aerolínea" />
                                 </div>
                                 <div class="flex items-center justify-between md:order-3 md:justify-end">
                                 <div class="text-end md:order-4 md:w-32">

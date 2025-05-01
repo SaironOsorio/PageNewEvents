@@ -35,6 +35,8 @@ class IvaoAuthController extends Controller
 
         $accessToken = $response->json('access_token');
 
+        session(['ivao_access_token' => $accessToken]);
+        
         $userResponse = Http::withToken($accessToken)->get('https://api.ivao.aero/v2/users/me');
         $ivaoUser = $userResponse->json();
 

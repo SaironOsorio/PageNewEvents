@@ -42,6 +42,21 @@
 
     </head>
 <body>
+    @if(!session('ivao_access_token'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Tu sesión ha expirado o no tienes acceso. Por favor, inicia sesión nuevamente.',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            // Redirige a ruta que destruye sesión
+            window.location.href = '{{ route('logout') }}';
+        });
+    </script>
+  @endif
+
     <x-navbar />
 
     <section class="bg-white">
