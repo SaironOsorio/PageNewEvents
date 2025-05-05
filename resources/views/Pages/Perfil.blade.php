@@ -57,6 +57,7 @@
     </script>
   @endif
 
+
     <x-navbar />
 
     <section class="bg-white">
@@ -99,11 +100,9 @@
     </section>
     </div>
     <hr class="bg-gray-200 border-0 h-px w-1/2 mx-auto" />
-
+    @livewire('my-reserved-user')
     <!-- Footer -->
     <x-footer />
     <!-- End Footer -->
-    
-    
 </body>
 </html>
