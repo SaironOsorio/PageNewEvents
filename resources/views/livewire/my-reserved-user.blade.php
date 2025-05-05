@@ -33,7 +33,7 @@
                         @endif
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <a x-data @click="$dispatch('alert_delete', { id: {{ $booking->id }} })"
+                        <a x-data @click="window.dispatchEvent(new CustomEvent('alert_delete', { detail: { id: {{ $booking->id }} } }))"
                           class="text-red-600 border border-red-600 hover:bg-red-50 font-medium rounded-lg text-sm px-4 py-2 cursor-pointer">
                           Cancelar Reserva
                        </a>
@@ -170,7 +170,6 @@
     </div>
     @endif
     <!-- End Modal -->
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       window.addEventListener('alert_delete', function (event) {
@@ -186,7 +185,7 @@
               confirmButtonText: "Sí, cancelar reserva"
           }).then((result) => {
               if (result.isConfirmed) {
-                  Livewire.dispatch('deleteBookingConfirmed', { id: bookingId });
+                Livewire.dispatch('deleteBookingConfirmed', { id: bookingId });
               }
           });
       });

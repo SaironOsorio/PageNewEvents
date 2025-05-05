@@ -12,7 +12,7 @@ class MyReservedUser extends Component
 {
 
     public $selectedBooking = null;
-
+    
 
     public function showBooking($id)
     {
@@ -62,9 +62,10 @@ class MyReservedUser extends Component
 
     }
 
-    public function deleteBookingConfirmed($data)
+    protected $listeners = ['deleteBookingConfirmed'];
+    
+    public function deleteBookingConfirmed($id)
     {
-        $id = $data['id']; 
         $booking = Booking::findOrFail($id);
         $flightId = $booking->flight_id;
         $booking->delete();
