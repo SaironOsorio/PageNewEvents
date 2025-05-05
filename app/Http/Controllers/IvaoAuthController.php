@@ -32,10 +32,14 @@ class IvaoAuthController extends Controller
             'redirect_uri' => route('ivao.callback'),
             'code' => $request->code,
         ]);
-
+        if (!$response->successful()) {
+            return redirect('/')->withErrors('No se pudo autenticar con IVAO.');
+        }
+    
         $accessToken = $response->json('access_token');
-
-        session(['ivao_access_token' => $accessToken]);
+        session([
+            'ivao_access_token' => $accessToken,
+        ]);
         
         $userResponse = Http::withToken($accessToken)->get('https://api.ivao.aero/v2/users/me');
         $ivaoUser = $userResponse->json();

@@ -41,7 +41,7 @@
                                 <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm -800 md:p-6">
                                 <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                                     <div class="h-14 w-36 flex items-center justify-center">
-                                        <img class="max-h-full max-w-full object-contain" src="{{ $fligth->logoAirline }}" alt="Logo aerolínea" />
+                                        <img class="max-h-full max-w-full object-contain" src="{{ $fligth->airline_logo }}" alt="{{ $fligth->airline_name }}" />
                                     </div>
                                     <div class="flex items-center justify-between md:order-3 md:justify-end">
                                     <div class="text-end md:order-4 md:w-32">
@@ -51,25 +51,26 @@
                     
                                     <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
                                         <div class="text-base font-medium text-gray-900 flex items-center justify-between gap-3">
-                                            <span>{{$fligth->departure_airport}}</span>
+                                            <span>{{ ucfirst(strtolower($fligth->departure_airport)) }}</span>
                                         
                                             <!-- Separador con línea y texto -->
                                             <span class="relative flex items-center w-full max-w-[80px]">
                                             <hr class="w-full h-px bg-gray-200">
-                                            <span class="absolute left-1/2 -translate-x-1/2 bg-white px-2 text-sm text-gray-400">1h:39m</span>
+                                            <span class="absolute left-1/2 -translate-x-1/2 bg-white px-2 text-sm text-gray-400"><span class="material-symbols-outlined text-gray-400 rotate-90">flight</span>
+                                              </span>
                                             </span>
                                         
-                                            <span>{{$fligth->arrival_airport}}</span>
+                                            <span>{{ucfirst(strtolower($fligth->arrival_airport))}}</span>
                                         </div>
                                         <div class="my-6">
-                                            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Hora para reserva : {{$fligth->departure_time}}</span>
-                                            <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{$fligth->FlightType}}</span>
+                                            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Hora para reserva : {{ \Carbon\Carbon::parse($fligth->departure_time)->format('H:i:s') }}</span>
+                                            <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ucfirst(strtolower($fligth->FlightType))}}</span>
                                         </div>
                                         <hr class="bg-gray-200 border-0 h-px w-full" />  
                                             
                                         <div class="flex items-center gap-4">
                                         @if($fligth->is_cancelled == false)
-                                        <a href="../Page/informacion.html" type="button" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline cursor-pointer">
+                                        <a href="{{ route('booking', ['id_fligth' => $fligth->id]) }}" type="button" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline cursor-pointer">
                                             <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
                                             </svg>
@@ -116,7 +117,7 @@
                             <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm -800 md:p-6">
                             <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                                 <div class="h-14 w-36 flex items-center justify-center">
-                                    <img class="max-h-full max-w-full object-contain" src="{{ $fligth->logoAirline }}" alt="Logo aerolínea" />
+                                    <img class="max-h-full max-w-full object-contain"  src="{{ $fligth->airline_logo }}" alt="{{ $fligth->airline_name }}" />
                                 </div>
                                 <div class="flex items-center justify-between md:order-3 md:justify-end">
                                 <div class="text-end md:order-4 md:w-32">
@@ -126,25 +127,25 @@
                 
                                 <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
                                     <div class="text-base font-medium text-gray-900 flex items-center justify-between gap-3">
-                                        <span>{{$fligth->departure_airport}}</span>
+                                        <span>{{ucfirst(strtolower($fligth->departure_airport))}}</span>
                                     
                                         <!-- Separador con línea y texto -->
                                         <span class="relative flex items-center w-full max-w-[80px]">
                                         <hr class="w-full h-px bg-gray-200">
-                                        <span class="absolute left-1/2 -translate-x-1/2 bg-white px-2 text-sm text-gray-400">1h:39m</span>
+                                        <span class="absolute left-1/2 -translate-x-1/2 bg-white px-2 text-sm text-gray-400"><span class="material-symbols-outlined text-gray-400 rotate-90">flight</span></span>
                                         </span>
                                     
-                                        <span>{{$fligth->arrival_airport}}</span>
+                                        <span>{{ucfirst(strtolower($fligth->arrival_airport))}}</span>
                                     </div>
                                     <div class="my-6">
-                                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Hora para reserva : {{$fligth->departure_time}}</span>
-                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{$fligth->FlightType}}</span>
+                                        <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full">Hora para reserva :  {{ \Carbon\Carbon::parse($fligth->departure_time)->format('H:i:s') }}</span>
+                                        <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">{{ucfirst(strtolower($fligth->FlightType))}}</span>
                                     </div>
                                     <hr class="bg-gray-200 border-0 h-px w-full" />  
                                         
                                     <div class="flex items-center gap-4">
                                     @if($fligth->is_cancelled == false)
-                                    <a href="../Page/informacion.html" type="button" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline cursor-pointer">
+                                    <a href="{{ route('booking', ['id_fligth' => $fligth->id]) }}" type="button" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline cursor-pointer">
                                         <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
                                         </svg>

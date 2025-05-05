@@ -51,7 +51,7 @@
                     </button>
                     <div id="dropdownPiloto" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 ">
                     <ul class="py-2 text-sm text-gray-700">
-                        <li><a href="./Pages/eventos.html" class="block px-4 py-2 hover:bg-gray-100 poppins-regular">Reservar</a></li>
+                        <li><a href="{{ route('eventos') }}" class="block px-4 py-2 hover:bg-gray-100 poppins-regular">Reservar</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 poppins-regular">Información</a></li>
                     </ul>
                     </div>
@@ -64,7 +64,7 @@
                     </button>
                     <div id="dropdownControlador" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
                     <ul class="py-2 text-sm text-gray-700">
-                        <li><a href="./Pages/Page/eventoController.html" class="block px-4 py-2 hover:bg-gray-100 poppins-regular">Reservar</a></li>
+                        <li><a href="https://atc.ivao.aero/" class="block px-4 py-2 hover:bg-gray-100 poppins-regular">Reservar</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 poppins-regular">Información</a></li>
                     </ul>
                     </div>
