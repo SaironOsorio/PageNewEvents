@@ -30,6 +30,7 @@ class User extends Authenticatable implements FilamentUser
         'atc_rating_short',
         'pilot_rating_name',
         'pilot_rating_short',
+        'is_admin',
     ];
 
     /**

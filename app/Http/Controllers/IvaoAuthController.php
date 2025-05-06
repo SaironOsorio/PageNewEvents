@@ -44,6 +44,21 @@ class IvaoAuthController extends Controller
         $userResponse = Http::withToken($accessToken)->get('https://api.ivao.aero/v2/users/me');
         $ivaoUser = $userResponse->json();
 
+        //Id Staff Positions
+        $staffadmin = ['CO-EC','CO-EAC','CO-EA1','CO-WM','CO-AWM','CO-WMA1','CO-DIR','CO-ADIR'];
+        $isAdmin = false;
+
+        if (isset($ivaoUser['userStaffPositions']) && is_array($ivaoUser['userStaffPositions'])) {
+            foreach ($ivaoUser['userStaffPositions'] as $position) {
+                if (
+                    isset($position['id']) &&
+                    in_array(strtoupper(trim($position['id'])), $staffadmin)
+                ) {
+                    $isAdmin = true;
+                    break;
+                }
+            }
+        }
         // Crea o actualiza el usuario en tu DB
         $user = User::updateOrCreate(
             [
@@ -58,10 +73,11 @@ class IvaoAuthController extends Controller
                 'atc_rating_short' => $ivaoUser['rating']['atcRating']['shortName'] ?? null,
                 'pilot_rating_name' => $ivaoUser['rating']['pilotRating']['name'] ?? null,
                 'pilot_rating_short' => $ivaoUser['rating']['pilotRating']['shortName'] ?? null,
+                'is_admin' => $isAdmin,
+                
             ]
 
         );
-
         Auth::login($user);
 
         return redirect('/profile');
