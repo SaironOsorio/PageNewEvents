@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\IVAOAuthController;
+use App\Http\Controllers\IvaoAuthController;
 use App\Livewire\Pages\EventDetail;
 use App\Livewire\Pages\ListFligths;
 use App\Livewire\Pages\BookingPage;
@@ -14,17 +14,17 @@ Route::get('/', function () {
 })->name('home');
 
 /** Route Auth SSO Ivao */
-Route::get('/login', [IVAOAuthController::class, 'redirectToIVAO']);
-Route::get('/auth/callback', [IVAOAuthController::class, 'handleCallback'])->name('ivao.callback');
+Route::get('/login', [IvaoAuthController::class, 'redirectToIVAO']);
+Route::get('/auth/callback', [IvaoAuthController::class, 'handleCallback'])->name('ivao.callback');
 
 Route::get('/logout', function () {
-    session()->flush(); 
+    session()->flush();
     Auth::logout();
     return redirect('/');
 });
 /** Route Perfil User    */
     Route::get('/profile', function () {
-        return view('Pages.Perfil'); 
+        return view('Pages.Perfil');
 })->middleware(['auth', 'verified'])->name('profile');
 
 /** Route Events */
@@ -38,7 +38,6 @@ Route::get('/eventos/{slug}/vuelos', ListFligths::class)->middleware(['auth'])->
 
 /** Route Booking */
 Route::get('/booking/{id_fligth}', BookingPage::class)->middleware(['auth'])->name('booking');
-
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

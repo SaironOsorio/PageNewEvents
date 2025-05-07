@@ -1,10 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IVAOAuthController;
+use App\Http\Controllers\IvaoAuthController;
 use Livewire\Volt\Volt;
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [IVAOAuthController::class, 'redirectToIVAO'])
+    Route::get('/login', [IvaoAuthController::class, 'redirectToIVAO'])
         ->name('login');
 });
 
