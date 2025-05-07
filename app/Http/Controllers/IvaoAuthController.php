@@ -17,7 +17,7 @@ class IvaoAuthController extends Controller
             'redirect_uri' => route('ivao.callback'),
             'response_type' => 'code',
             'scope' => 'email',
-            'state' => 'xyz', 
+            'state' => 'xyz',
         ]);
 
         return redirect("https://sso.ivao.aero/authorize?$query");
@@ -35,12 +35,12 @@ class IvaoAuthController extends Controller
         if (!$response->successful()) {
             return redirect('/')->withErrors('No se pudo autenticar con IVAO.');
         }
-    
+
         $accessToken = $response->json('access_token');
         session([
             'ivao_access_token' => $accessToken,
         ]);
-        
+
         $userResponse = Http::withToken($accessToken)->get('https://api.ivao.aero/v2/users/me');
         $ivaoUser = $userResponse->json();
 
@@ -74,7 +74,7 @@ class IvaoAuthController extends Controller
                 'pilot_rating_name' => $ivaoUser['rating']['pilotRating']['name'] ?? null,
                 'pilot_rating_short' => $ivaoUser['rating']['pilotRating']['shortName'] ?? null,
                 'is_admin' => $isAdmin,
-                
+
             ]
 
         );

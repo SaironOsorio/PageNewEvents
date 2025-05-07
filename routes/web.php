@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\IVAOAuthController;
+use App\Http\Controllers\IvaoAuthController;
 use App\Livewire\Pages\EventDetail;
 use App\Livewire\Pages\ListFligths;
 use App\Livewire\Pages\BookingPage;
@@ -14,8 +14,8 @@ Route::get('/', function () {
 })->name('home');
 
 /** Route Auth SSO Ivao */
-Route::get('/login', [IVAOAuthController::class, 'redirectToIVAO']);
-Route::get('/auth/callback', [IVAOAuthController::class, 'handleCallback'])->name('ivao.callback');
+Route::get('/login', [IvaoAuthController::class, 'redirectToIVAO']);
+Route::get('/auth/callback', [IvaoAuthController::class, 'handleCallback'])->name('ivao.callback');
 
 Route::get('/logout', function () {
     session()->flush();
